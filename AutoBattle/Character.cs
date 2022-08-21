@@ -17,7 +17,7 @@ namespace AutoBattle
         public Character Target { get; set; } 
         public Character(CharacterClass characterClass)
         {
-
+            
         }
 
 
@@ -33,7 +33,7 @@ namespace AutoBattle
 
         public void Die()
         {
-            //TODO >> maybe kill him?
+            Console.WriteLine("Player " + this.Name + " die!");
         }
 
         public void WalkTO(bool CanWalk)
@@ -48,7 +48,6 @@ namespace AutoBattle
             {
                 Attack(Target);
                 
-
                 return;
             }
             else
@@ -67,7 +66,8 @@ namespace AutoBattle
 
                         return;
                     }
-                } else if(currentBox.xIndex < Target.currentBox.xIndex)
+                } 
+                else if(currentBox.xIndex < Target.currentBox.xIndex)
                 {
                     currentBox.ocupied = false;
                     battlefield.grids[currentBox.Index] = currentBox;
@@ -124,7 +124,7 @@ namespace AutoBattle
         {
             var rand = new Random();
             target.TakeDamage(rand.Next(0, (int)BaseDamage));
-            Console.WriteLine($"Player {PlayerIndex} is attacking the player {Target.PlayerIndex} and did {BaseDamage} damage\n");
+            Console.WriteLine(PlayerIndex == 0 ? $"Player is attacking the Enemy and did {BaseDamage} !" : $"Enemy is attacking the Player and did {BaseDamage} !");
         }
     }
 }
